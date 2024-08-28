@@ -1,0 +1,404 @@
+\documentclass[]{final_report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Input project details
+\def\studentname{Carl Mwaamba}
+\def\reportyear{2023}
+\def\projecttitle{Yellow Car}
+\def\supervisorname{Julien Lange}
+\def\degree{BSc (Hons) in Computer Science}
+\def\fullOrHalfUnit{Full Unit} % indicate if you are doing the project as a Full Unit or Half Unit
+\def\finalOrInterim{Interim Report} % indicate if this document is your Final Report or Interim Report
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Declaration
+
+\chapter*{Declaration}
+
+This report has been prepared on the basis of my own work. Where other published and unpublished source materials have been used, these have been acknowledged.
+
+\vskip3em
+
+Word Count: 4065
+
+\vskip3em
+
+Student Name: \studentname
+
+\vskip3em
+
+Date of Submission: 7th December 2023
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Table of Contents
+\tableofcontents\pdfbookmark[0]{Table of Contents}{toc}\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Your Abstract here
+
+\begin{abstract}
+
+This report will give a detailed overview of all relevant aspects of the development of Yellow Car. It will provide some background as to the origins of the idea and reasoning for the project as well as the goals which it aims to achieve. On top of this, an explanation and reflection on the implementation so far will be provided. Then finally the technologies used to support development will be disclosed and justified.
+
+\end{abstract}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Project Spec
+
+\chapter*{Project Specification}
+\addcontentsline{toc}{chapter}{Project Specification}
+Aims: Design and implement a web application realising an online service of your choice (such as an online store, social media or web commerce platform).
+
+Background:
+Web development is at the core of a large number of software projects. Thus, it is nowadays a fundamental skill that computer scientists are expected to comprehend and be able to apply - if not to essentially dominate.  The main goal of the project is to develop a full-stack Web (online) application/service using state-of-the-art technologies and established best-practices. 
+
+Example services include one of the following:
+
+an online store, e.g. providing the ability to authenticate, post items for sale, choose items to buy, search, perform payments, etc.
+a local exchange trading system, e.g. a system in which members of a community can exchange goods and services without the use of a conventional monetary currency.
+a social media application.
+an online tool for drawing and animating interactive diagrams (such as logic circuits, network graphs, or state machines), whose features include the creation/editing interface and the capability of exporting or embedding the diagrams easily into other web pages
+Students may propose their own Web applications/service to implement. However, a clear scope (i.e. a set of expected, well-defined use cases) should be specified and approved by their supervisor prior to commencing the project.
+
+The application’s design must follow an N-tier architectural pattern consisting of a web browser interface, Web and Application server layers and a Database.
+
+The basic elements to be supported must include the application logic and user interface implemented using one of the existing web application technologies/platforms (such as PHP, Ruby on Rails, Django, JavaScript-based frameworks such as NodeJS, REACT, Angular etc.), a relational database schema equipped with sound constraints and designed according to the sound normalization rules, and the interaction mechanisms between the application logic and the database. It is expected that prior to selecting the concrete technologies to be used, an evaluation of the state-of-the-art options will be performed along a number of comparison criteria (e.g. overall set of capabilities, support for aspects such as concurrency, security, modularity, performance, UX practices). The student is expected to (i) adequately establish such criteria (ii) investigate and reflect on a number of candidate technologies and (iii) appropriately compare and justify the concrete choices made.
+
+Advanced features may include supporting ACID transactions, comprehensive security/privacy analysis and advanced security mechanisms (such as protection against SQL injection attacks), using NoSQL data stores (such as MongoDB) to speed up user interaction while maintaining sound levels of transactional consistency, advanced UI features (such as push notifications), using emerging platforms (such as a blockchain), etc. 
+
+\newpage
+Early Deliverables
+A report describing the state-of-the-art of Web development, including technologies/frameworks/platforms and their comparison as described above. The report will also explain the concrete choices made and the respective rationale/justification from a software engineering perspective (i.e. a justification merely based on a skills learning perspective will not suffice)
+A report on Web development architectural paradigms and applicable design patterns, including an initial discussion of security, privacy and key-operational aspects and considerations (e.g. cloud deployments and DevOps aspects)
+A report describing the system to be implemented, including a comprehensive set of well-defined use cases (or user stories).
+A functional prototype implementation of the system, clearly demonstrating sound design principles and implementation practices (e.g. on DB design, on UI design and interaction).
+
+Final Deliverables
+A fully functional software application, with an appropriate end-to-end architecture, applicable design patterns, using modern Web technologies and rigorous software engineering principles.
+Complete report, encompassing also relevant content (further explained/discussed) from the early deliverables reports.
+The report will describe the software engineering processes involved in generating your software.
+The report will include a User Manual.
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Introduction
+\chapter{Introduction}
+
+\section{Background}
+
+This project is based on a simple travel game called yellow car. In this instance when I refer to a travel game, I mean a simple, verbal game which multiple people may play together during long journeys. Yellow car as a travel game is amongst the most simple, only composing of one rule: if a yellow coloured car is in sight, the first person to exclaim "yellow car" gets a point. Some people may play in a way where you get to punch someone else on the arm if you win, others may allow different coloured cars to be spotted for varying amounts of points (known as spotto [1]). It is one of those games where the rules will more often than not be different depending on who you ask, however for this purpose I will be using my own interpretation of the game which was stated above.
+
+\section{Motivation}
+
+My motivation for picking this as my project comes from how the game is so simple that I would subconsciously spot yellow cars as if I were playing the game. Since I was introduced to the game when I was young, I have gradually been conditioned to associate more or less every yellow car I see with the game. The result of this is that whenever outside with another person I would almost instinctually make the exclamation when spotting a yellow car, moving it from something to play exclusively during long journey to something to play all the time.
+
+During the summer break I had the realisation that I am always spotting yellow cars however there isn't always someone with me who I can play the game with. This lead to me having the idea of creating a mobile app which would allow you to take photos of yellow cars and upload them to the app to show off to others who aren't near you physically. This would be a good solution to this new found problem by removing the restriction of having to play the game in person. On top of this, having it accessible through a mobile device meant it was easy to get your phone out and take a photo before the car is out of sight.
+
+This was the thought process which led to me coming up with the idea for yellow car. Due to the timing I thought it would be a good idea to implement as my final year project while it was fresh in my mind however a mobile app was not an option for my final year project. The next best thing in my opinion was to create it as a website. A website project would give me the flexibility to create effectively whatever I wanted plus I would have the ability to later format the website to work on mobile devices if I wished. A mobile website would be the closest thing to a native mobile app which maintains the advantage of speed and accessibility, however I think it would be best to develop the desktop version of the site first which is what this project is about.
+
+\newpage
+\section{Goals}
+
+The application is intended to be implemented across the full web development stack, meaning there will be a front-end, back-end and database component to the website. This is necessary both to meet the requirements of the project brief and to provide the levels of interactivity required to implement Yellow Car as I imagine it.
+
+To meet the "advanced" requirement for the project I aim for the platform itself as well as user accounts should be suitably secured against common attacks. To do this I aim to implement:
+
+\begin{itemize}
+    \item SQL injection protection
+    \item Password hashing with salt
+    \item User session IDs
+    \item Encrypted transfer protocols (HTTPS). 
+\end{itemize}
+
+In terms of views/pages there are four main ones which are essential:
+
+\begin{itemize}
+    \item Home feed
+    \item Profile view
+    \item Leaderboard
+    \item Login/Sign-up
+\end{itemize}
+
+As for actions the user, they should be able to:
+
+\begin{itemize}
+    \item Create an account
+    \item Log in/out of their account
+    \item View posts from other users
+    \item Comment on posts from other users
+    \item Add other users as friends
+    \item Upload images they have taken of yellow cars to their profile
+    \item Increase their account score by creating posts
+    \item Compare their account score to other users on a leaderboard.
+\end{itemize}
+
+\chapter{Utilised Technologies}
+
+\section{Software}
+
+\subsection{Node.js}
+For my back-end environment I chose node.js. This is a run-time environment which allows JavaScript code to run outside of a browser, thus allowing developers to program their entire back-end using JavaScript. 
+
+The main benefit of node.js is that being able to run your back-end on JavaScript as well as your front-end means there will be no conflicts when it comes to formatting of data to be transferred between the two. With a JavaScript back-end, you can simply transfer data in the form of a JSON file which is just a JavaScript object and is supported by HTTP requests. This means no need for translation when sending or receiving data, the raw data will just work. Streamlining the process in such a way is important to offset the difficulties and time cost of learning a technology for the first time.
+
+Another major benefit of node is npm, otherwise known as Node Package Manger. This is a system which comes bundled in node.js and it allows you to download libraries for effectively any use case you can think of. Utilisation of this system has proven instrumental in my progress so far with a lot of the interactions between layers of the stack being handled by libraries installed using npm. The node packages I have utilised will be disclosed later in the report.
+
+Node also automatically updates a file containing all dependencies. This means with one command you can automatically install all modules which are needed for the project, making setup on other devices very easy.
+
+\subsection{PostgreSQL}
+For the database I chose to use PostegreSQL. This was primarily due to my familiarity with SQL queries and the pgAdmin 4 software. This familiarity allowed me to cut down slightly on the list of new technologies to learn. pgAdmin is a graphical piece of software that is used to monitor the database which otherwise would not have a GUI. Having the database laid out in an easy to digest way makes checking the database at a glance very easy which is helpful for testing and bug fixing. It also features a query tool which is useful for testing and provides syntax highlighting and descriptive error messages which I would otherwise not have access to.
+
+\newpage
+\subsection{VS Code}
+I decided to use VS Code as my IDE as I am familiar with it's layout and feature set. In particular I am familiar with its built in git integration which allows me to make commits a lot faster and easier than using the terminal. VS Code also has the ability to run multiple terminals within the application at the same time, which is useful as I need separate terminals to run the live front-end and back-end dev environments individually. Some other features it has are very fine level customisation allowing you to change almost all aspects of how your code looks using JSON data, native support for a large range of file types (.ts, .scss/.sass, .tsx, .md, etc.), and support for extensions. The two extensions I use are prettier, which automatically formats my code on save, and live sass compiler which watches for changes in SASS files and automatically compiles them into CSS on save. All features described contribute significantly to my workflow.
+
+\subsection{Postman}
+Finally another piece of software I use is postman. This software allows you to send any sort of HTTP request you would like to any end point, making testing my API a lot easier.
+
+\section {Libraries}
+
+All libraries discussed in this section were installed using Node Package Manager which goes to show how important it has been for the development process so far.
+
+\subsection{React}
+For front end development I have decided to use React which was setup using the create react app module. It is a very popular library which is been widely adopted by many in the web development industry. This means I can have confidence in the maturity and feature set react provides. Again it is important that the libraries I use work with minimal tinkering as I am doing a lot of learning at the same time. Another plus to the widespread adoption of react is that there is a lot of documentation and tutorial content available to make the learning experience easier.
+
+A feature of react which contributes to the ease of use is the ability to use HTML syntax within JavaScript files. This code is known as JSX and make the manipulation of the DOM much easier than using JavaScript built in DOM manipulation functions.
+
+Another benefit react provides is how it fundamentally works. A react app consists of just one HTML file called index.html and this is the only file which your browser opens. All changes to the contents of the website are from then on handled by react which uses JavaScript to manipulate the elements on the page. This process is made easier for the developer by allowing them to create what are called components. These are effectively groups of HTML elements stored as separate files. Components allow the developer so easily manipulate groups of elements at a time. All of this avoids the need to make an HTTP request to a server every time you want to change page thus making the entire site run a lot faster than otherwise.
+
+\newpage
+Despite it performing better, you would not want your entire website to be just one page, if you want to swap to a completely different layout it would take an unnecessary amount of work to rearrange every time you swap. React's solution to this is it's router package which allows you to simulate having different pages entirely but again without the HTTP requests. The system works using components to represent entire separate pages. HTTP requests are then intercepted by the router and converted into instructions for what component/page to display. The benefit of this is it allows you to still reference the href of the page as if you were making HTTP requests but without the performance hit.
+
+\subsection{Typescript}
+For both front-end and back-end programming I installed typescript. This is a modified version of JavaScript which uses explicitly declared types for variables. This means a lot of issues relating to type compatibility can be caught during compile time as opposed to run time which makes bugs a lot easier to fix and avoid. The good thing about typescript is that is compiles down to regular JavaScript which makes it compatible with pretty much anything which is compatible with plain JavaScript.
+
+\subsection{Jest}
+For front-end and back-end testing I chose to used jest. This is a unit testing library which makes the process very simple. Something I like about the library is that the function names come out to effectively read as regular English, making the whole process very intuitive. Node.js allows me to use jest for both my front-end and back-end testing which prevent me from having to find separate testing libraries for each case.
+
+\subsection{Nodemon}
+Nodemon is a module which allows me to run javascript files but have them automatically restart eafter making changes to the file. This is similar to the live sass compiler extension for VS Code where it watches a file for changes. Using this script means I don't have manually restart after every little change, and this is particularly useful for front-end work where I want to make small changes to the layout bit by bit.
+
+\subsection{React-Boostrap}
+For styling of the front-end I use react bootstrap. This is a modified version of the popular bootstrap library which now works seamlessly with react. With this version of bootstrap I can create elements using JSX which have pre set styling which can then be further customised. This makes it a lot easier to make things like navbars and input forms, while also keeping the colour scheme consistent with primary, secondary, light, dark colour sass variables. SASS is a modified version of CSS in the same spirit of what typescript is to JavaScript. It makes CSS more reusable by adding variables and functions then gets compiled back down the plain CSS.
+
+\subsection{Express}
+In order to allow the front-end application to communicate with the server I need an API which handles HTTP requests. For this I used a combination of the express, cors, and multer modules. Express is the backbone of it all and handles the bulk of the work when it comes to handling HTTP request. It allows you to specify which type of request (GET, POST, DELETE, and PUT) as well as the end point and what code to run. It handles getting data from the request body or URL parameters in a very simple way and the same for sending back response. Cors is a module simply needed to decide where requests will be accepted from ensuring you must be using the website to make requests to the server. Multer is a module which handles saving large files such as images to server storage which is needed for image uploading.
+
+\subsection{Node-Postgres}
+Node postgres is the module I used to communicate with the database. It makes the process quite simple with minimal setup and an easy to use query function. The only issue I have with the module is it can sometimes be confusing correctly manipulating the output data into a form where its usable in JavaScript. This however is more than made up for with it's built in SQL injection protection. If you use a specific syntax with your SQL queries it handles the insertion of data automatically while being careful of not allowing the context of quote marks to be escaped.
+
+\subsection{Crypto}
+Finally the crypto module is used for hashing and random string generation. This is needed to prevent passwords from being stored in plain text. The hash function I use is SHA256 which while not perfectly secure against brute force attacks will deter most attackers. When hashing I have also implemented a salt as an extra level of security, and to generate these salts I use a random string function. The random string function is also used for generating random session tokens to validate user activity.
+
+\chapter{Implementation \& Progress}
+
+\section{Front End}
+
+At the moment there are four pages created with two of them nearly fully functional and styled. Those two pages are the login and sign up pages as they are most relevant to the account security aspects I have been focusing on throughout development so far. They are able to send data in the body of HTTP POST requests and react accordingly to the response they get back. The only functionality they are lacking at the moment is error handling which is something which equally needs to be implemented in the back end.
+
+The feed and profile pages at the moment are more functional proofs of concept than finalised pages. They both are capable of communicating with the back end to send and receive images however the feed in particular still needs to be programmed to fetch entire posts as well as be styled in a more appealing way. The profile page also needs to be formatted in a more attractive way as well as programmed to display posts uploaded by a specific user.
+
+\section{Back End}
+
+\subsection{REST API}
+
+Regarding the back end server this is probably the most stable part of the application at the moment. The API portion is handled by the express module which allows for an API that listens for HTTP requests. In this case the server listens on port 5000. As I understand, the specific port does not matter as long as it is not being used by anything else, so I could have chosen any other free port if I wanted. The types of requests that the server accepts at the moment are GET, POST, and DELETE which correspond to retrieving data, inserting data, and removing data respectively. 
+
+These HTTP requests can provide data in two ways, either through request parameters in the head or through key value pairs in the body. Typically most data will be put in the body of the request, especially if it is large in size. For HTTP the body will be slightly more secure than the head since parameters in the head can be read by anyone monitoring your network traffic. For HTTPS on the other hand, all data including the head is encrypted [2] so it technically wouldn't matter if the data was in the head or the body, however it is better practice to just put sensitive data in the body regardless. The only type of data you would put in the head would be something like the name of a file you are trying to get. 
+
+At the moment the website is using HTTP, however I hope to in the future move to HTTPS to provide encryption and increase security.
+
+\newpage
+\subsection{Database Communication}
+
+To communicate with the database I have utilised the node-postgres module. This allows me to use the query function along with the query text and data parameters to execute queries on the database. All queries are handled by this function because it provides SQL injection protection [3]. This is very important to have because otherwise anyone can potentially delete everything in the database using nothing but the input fields in the login and sign up pages. 
+
+To explain briefly, this would work by cleverly formatting an input string to allow you to run any SQL query you wish. When the input string is concatenated with the SQL query, if quotation marks are positioned correctly you can escape the context of the input string and enter into the query where you can insert whatever you want. Potentially a user could insert a query to drop all tables from the database which would delete all stored data. This would not be acceptable in any capacity from a security standpoint since it is so easy to do and can have a catastrophic impact.
+
+Example call of query function with SQL injection protection:
+
+\begin{verbatim}
+    const text: string = "select username from accounts where email = $1;";
+    const values: any[] = [email];
+    const response: any = await client.query(text, values);
+\end{verbatim}
+
+Example call of query function without SQL injection protection:
+
+\begin{verbatim}
+    const text: string = "select username from accounts where email = '" + emaill + "';";
+    const response: any = await client.query(text);
+\end{verbatim}
+
+In the example with protection, the query text and values are separate, with the text being just a string and the values being an array of variables. Inside the string you can specify where you would like data to be safely inserted into the query using a dollar sign followed by a number. This number will correspond to the array of values with a 1 being the first value and a 2 being the second etc. If you contrast this to the non protected example where the email variable is simply concatenated with the string, by putting a single quote at the start of the email allows one to escape the context of the string and insert their own SQL statements. 
+
+\subsection{Hashing \& Random Strings}
+
+On top of handing HTTP requests and SQL queries, the server also handles password hashing and random string generation. To do this I utilise the crypto module with its createHash and randomBytes functions. The hash function allows you to specify which of the available hash functions you would like to use which in this case I chose SHA256. The random bytes function lets you choose the length which in this case is 32 and that corresponds to an output string 64 characters long.
+
+\newpage
+For password hashing I have decided to use a salt, which is a random string that is concatenated with the plain text password before hashing. The salt is stored in the database with its corresponding user which counteracts a weakness of password hashing, that being lookup tables [3]. Attackers may decided to pre-compute a lookup table of common passwords and their resultant hashes, however a random salt which is unique per user practically eliminates this risk. Unfortunately hashing does not have perfect security as modern hardware is capable of computing billions of possible hashes per second [5]. Despite this, hashing is much preferred over none at all as it still provides some level of deterrent for most attackers.
+
+For random string generation I chose to use randomBytes from the crypto module as it should be more cryptographically secure than the Math.random  function native to javascript [6]. The reason for this is that the javascript version is software implemented and uses a seed to create a random number. This calculation is deterministic therefore if you know the see you will be able to generate the same random number. The more cryptographically secure algorithms present in the crypto library generate random values which are non-deterministic as the cost of efficiency but do provide better security [7]. These random string are utilised both for generating salts and for sessions IDs.
+
+\subsection{Testing}
+
+All query and crypto functions have been tested using TDD and the jest module which allows me to create unit tests for each function. Every currently supported database operation is validated to make sure it returns the correct data in the correct format before that is passed on directly by the API. The API itself was tested in a TDD manor however does not currently have any unit tests, rather I used postman to formulate how I would like requests to be structured. These tests are saved in the software so I can run them whenever I would like.
+
+\section{Database}
+
+Currently the database only has two tables: users, and sessions. The users table contains information per user on their email, username, hashed password, and salt. The email is the primary key as there should not be two users who share the same email. The sessions table contains a user's email as a foreign key from accounts as well as a session ID. The presence of a user's email in the table indicates that they are logged in so this table is used to validate session keys to see if they have expired.
+
+In the future I aim to add more tables for friendships, posts, and comments, as well as expand the users table to have an account score field. At the moment however, these features are not functional anywhere else in the application therefore database tables are not needed for the time being.
+
+\chapter{Reflection}
+
+\section{Summary of Work}
+
+The start of the development process had me primarily learning how to properly use React and Node to set up the project correctly. This was a relatively lengthy process as I had not used these technologies in the past before. Eventually as I got up to speed with them I was able to shift my focus more to the back end in order to start working on the login and account system. 
+
+It is clear that I took a more back end oriented approach by developing features in the back end first then implementing them in the front end accordingly. I believe this was the correct approach to take as it allowed me to meet almost all of my security goals sooner and then develop the front end around the requirements set by the back end.
+
+\section{What I Would Do Differently}
+
+Despite being of the opinion that a back end first development style was the best option, I do think I should have put a bit more time into styling the front end. Even though a lot of default styling is provided by bootstrap there is just as much I have to do on my own. Making the pages look a bit nicer I feel would go a long way to making the application look more cohesive than it does at the moment.
+
+\section{Next Steps}
+
+My next steps will involve developing the uploading process further. I plan to implement a table for posts in the database alongside the corresponding database queries. Being able to tie posts to specific users will allow me to start developing the feed further. Adding account sores will also allow me to develop the leaderboard. 
+
+The feed will be developed first as it is the most important page. I expect a lot of the hard work will have been done in the back end when implementing the post system into the database. From here it is just about getting and displaying the data in an attractive format.
+
+Once the feed is complete I will then move onto the leaderboard which similarly to the feed just requires displaying data who's systems will have already been implemented with the post system.
+
+Once these fundamental features are implemented I expect to take another pass over the entire system in order to add things like more elegant error handling and more minor features such as post commenting and friendships.
+
+\chapter{Development Diary}
+
+\section{September 2023} 
+
+\subsection{Wednesday 27th} 
+
+Cloned the git repository to my local machine and created bare bones files for both the diary and the project plan. Changes have been pushed to the remote.
+
+\subsection{Thursday 28th} 
+
+Added to project plan abstract to the point where it is ready for review before submission. Updated the incorrect dates in the diary.
+
+\subsection{Saturday 30th} 
+
+Created first draft of project timeline.
+
+\section{October 2023} 
+
+\subsection{Sunday 1st} 
+
+Filled out the project plan according to the marking grid. All is missing is the bibliography.
+
+\subsection{Tuesday 3rd} 
+
+Implemented suggested changes to first draft and added citations
+
+\subsection{Monday 9th} 
+
+Created basic main page foundation and customised a bit.
+
+\subsection{Friday 13th} 
+
+Added navbar component.
+
+\subsection{Saturday 14th} 
+
+Added ability to customised bootstrap sass variables, conditionally render login/signup buttons depending on loggedIn variable
+
+\subsection{Sunday 15th} 
+
+Restructured project to better implement backend files and allow for separate installation of node modules. Created basic placeholder api.
+
+\subsection{Saturday 21st} 
+
+Setup system to connect to database and perform queries.
+
+\subsection{Sunday 22nd} 
+
+Data can now be fetched from the database using an api call and return as a json
+
+\subsection{Saturday 28th} 
+
+Fixed issues with displaying favicon and navbar logo. Introduced issues with node modules, best course of action may be to create a fresh project and copy over all of own code.
+
+\subsection{Sunday 29th} 
+
+Rebuilt react project and setup jest testing for the backend. Created set of functions which return sql queries.
+
+\subsection{Monday 30th} 
+
+Changed method of accessing database. Now uses parameterised queries with built in SQL injection protections. New tests to acompany. A handful of cases to handle get request using the new methods have been created.
+
+\section{November 2023} 
+
+\subsection{Wednesday 1st} 
+
+Added error handling and reporting to database query methods. Changed the way the frontend dynamically changes contents and implemented functionality to insert new userse into the database.
+
+\subsection{Saturday 11th} 
+
+Styled the navbar, body, and login page. Can now swap login to signup mode.
+
+\subsection{Sunday 12th} 
+
+Passed down function as prop to allow swapping between login and signup screens. Created basic post and postlist components. Login is now functional to an extent.
+
+\subsection{Sunday 19th} 
+
+Updated styling of post elements
+
+\subsection{Monday 20th} 
+
+Changed to use react router to swap between pages. Updated database functions and tests to return more useful information.
+
+\subsection{Saturday 25th} 
+
+Now supports uploading images to the server. password hashing and salt generation now working.
+
+\subsection{Sunday 26th} 
+
+Reworked functions and tests regarding logins and sessions. logins, signups, and redirects work now.
+
+\section{December} 
+
+\subsection{Monday 4th} 
+
+Images can now be uploaded from front end.
+
+\subsection{Tuesday 5th} 
+
+Specific images can now be displayed on the feed.
+
+
+%%%% ADD YOUR BIBLIOGRAPHY HERE
+\newpage
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibitem[1]{Spotto} Margeit Rob, "The 400-year old history of Spotto, the yellow car game", Drive, 14th June 2021, https://www.drive.com.au/caradvice/the-400-year-old-history-of-spotto-the-yellow-car-game/ 
+\bibitem[2]{HTTPS} Cloudflare, "What is HTTPS?", Cloudflare, n.d., https://www.cloudflare.com/en-gb/learning/ssl/what-is-https/
+\bibitem[3]{SQL Injection} Acunetix, "What is SQL Injection (SQLi) and How to Prevent It", Acuentix, n.d., https://www.acunetix.com/websitesecurity/sql-injection/
+\bibitem[4]{SHA256} DUSTED CODES, "SHA-256 is not a secure password hashing algorithm", DUSTED CODES, 8th February 2016, https://dusted.codes/sha-256-is-not-a-secure-password-hashing-algorithm
+\bibitem[5]{GPUs farming hashes} Kingsley-Hughes Adrian, "25 GPUs devour password hashes at up to 348 billion per second", zdnet, 5th December 2012, https://www.zdnet.com/article/25-gpus-devour-password-hashes-at-up-to-348-billion-per-second/
+\bibitem[6]{Math.random} Beltre Kemil, "Why do not use Math.random()", Medium, 23rd January 2022, https://kemilbeltre.medium.com/why-do-not-use-math-random-a6f8b0ad38dd
+\bibitem[7]{Randomness} Özkaynak Fatih, "Cryptographically secure random number generator with chaotic additional input", Nonlinear Dynamics 78, 23rd July 2014, https://rdcu.be/ds2sD
+\end{thebibliography}
+\label{endpage}
+
+\end{document}
+
+\end{article}

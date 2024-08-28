@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Final Year Project Plan (Yellow Car)}
+\author{Carl Mwaamba}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Abstract}
+
+\subsection{Overview}
+This is a plan for the creation of a full stack implementation of a social media platform akin to the likes of Instagram. It will be themed around the game "Yellow Car", the rules of which will be explained further on. The game may go by a different name such as "Banana Car" or "Spotto" depending on who you ask, similarly to how the playground game "It" has different names based on the region.
+
+\subsection{Rules}
+The game is typically played while travelling with other people in a similar vein to "I Spy". For this project I will be using the rules I personally play by though similarly to the name of the game, the rules may vary depending on who you ask. In this instance it is simple, if you spot a yellow car you must say "yellow car!" and the first person to do so will get a point. Typically variations lie in the scope of the game, with some using more than just yellow cars, or restricting the game to only count moving cars as opposed to parked ones. Some people will play just for points while others may play for "free punches" to the shoulder.
+
+\subsection{Motivation}
+The motivation to adapt the game comes from the inability to play this sort of game without being in the same physical location as another participant. Despite the game being intended to only be played during travel with other people, if you play the game often enough you may start subconsciously noticing yellow cars in day to day life. The application is intended to provide an easy way to document these day to day sightings and expand the game from a purely travel game to something a bit more large scale. Despite the intention of making the game larger scale, there are no intentions for the platform to compete with anything existing in the social media space. It is acknowledged that the application of this concept is extremely niche however that is exactly the purpose, to fill the niche of providing an online platform for a small travel game.
+
+\subsection{Goals}
+With this project I hope to be able to implement a system where users can provide information such as email addresses to register an account and log in. This should allow them to upload image files from their computer and have them be saved in a database. This database should be set up in a way where the image is tied to the account which uploaded it and therefore can be displayed on that user's profile. User's should be able to find other users and add them as friends which should tie into two systems. The first being a scoreboard system where you gain points for uploading images of yellow cars and compete for the top spot. It should be able to be sorted by Global, regional, and friends. The other feature friend should tie into is an in browser mini game themed around spotting cars. This adds a sort of social interaction and will also tie into the score system. Comments on posts and private messages would be welcomed features to enhance the social aspect of the appllication also.
+
+\section{Timeline}
+
+\subsection{Overview}
+In regards to time management, the aim is to get the bulk of the project done within the first term. This means the home page and account system will ideally be functional. The second term will be more focused on adding on top of the base system by updating visuals, adding new smaller features and finally finishing documentation.
+
+\subsection{Term 1 (By Week)}
+
+\begin{enumerate}
+    \item Get dev environment setup and select frameworks
+    \item Create skeleton for home page and login
+    \item Setup database table for account information and integrate with back end
+    \item Integrate front end login to back end
+    \item Add image and comment storage to database and integrate with back end
+    \item Allow image uploading and retrieval as well as commenting from front end
+    \item Implement friend and messaging system on database and back end
+    \item Implement friend and messaging system on front end
+    \item Interim report and presentation
+    \item Interim report and presentation (1st December)
+\end{enumerate}
+
+\subsection{Term 2 (By Week)}
+
+\begin{enumerate}
+    \item Implement scoreboard system in database and back end
+    \item Implement scoreboard system in front end
+    \item Implement mini game in front end and send score updates to back end
+    \item Implement mini game in front end and send score updates to back end
+    \item Database and back end refactor to ensure meeting of database and security expectations
+    \item Front end UI/UX improvements across whole application
+    \item Final report
+    \item Final report
+    \item Final report
+    \item Final report (March 22nd)
+\end{enumerate}
+
+\subsection{Explanation}
+My aim in terms of pacing is to implement a feature across the full stack every 2 weeks. The first week will be dedicated to the back end and database implementation. I feel this should be done first as it is a lot easier to model the front end according to the back end compared to the other way around. I also don't expect that the front end implementation should take up the whole week, so this method should leave to wiggle room for extra back end development should it be needed. I have allocated the most important features for the fundamental project to the first term in hopes they will be ready for the presentation. The additional features have been put into the second term because they are not as important for the project. Two weeks have been allocated just before the start of the final report to allow for refactoring across the whole application. This should allow time for me to ensure the final product is polished and well presented.
+
+I have chosen to allocate 2 weeks for the interim report and presentation then 4 weeks for the final report, each at the end of their respective terms. Ideally I will want to be working on these reports throughout the whole term, however if the opportunity does not present itself I feel these time allocations will be sufficient to produce the reports from scratch.
+
+\section{Risks and Mitigations}
+
+\subsection{Overestimation of Time}
+With any project there is the risk of not properly allocating enough time, especially when it's a project which is being done for the first time. In this instance there is the risk that assigning 2 weeks per vertical slice of the application may not be enough considering some of these things I will be learning how to do for the first time. To mitigate this risk I have ordered each slice according to it's importance. This way, the features which are mandatory will be done first and ideally within the first term, that way if I encounter any major problems I can abandon some of the lesser features in exchange for more time to fix the core app in the second term.
+
+\subsection{Failure of hardware or corruption of data}
+There is a risk that the hardware which I will be using to develop the app may fail or the data on the drives becomes corrupted. This has the potential to lead to the entire code base being inoperable, and if this were to happen towards the end of the allocated time there would likely be no recovering. To mitigate this I will be using the provided Gitlab repository to store all resources related to the project remotely. This creates redundancy and a way to recover from potential failures.\\
+
+\noindent
+\textbf{Likelihood:} Low to Moderate (Higher than standard)\\
+\textbf{Importance:} High\\
+
+\noindent
+Typically this would not be something you would consider as a very likely risk, however in this particular instance. The reason for this is the machine which will be used for development has recently gone through a hardware change, and while measures have been taken to minimise the risk of it affecting the project new hardware could introduce unforeseen issues in the near future.
+
+\subsection{Framework incompatibility}
+It is possible that to a degree, the frameworks chosen for this project will make my life difficult as a developer by requiring more work that necessary. If this were the case it could lead to needing more time than is available (As seen in risk number 1). To mitigate this chance I have chosen React as my front end framework which can be installed using Node which happens to be the run time environment I have chosen for my back end code. Node allows me to use JavaScript code in the back end also, which will make the translation between front end and back end. This is particularly useful for interpreting Json files.\\
+
+\noindent
+\textbf{Likelihood:} Low\\
+\textbf{Importance:} Moderate\\
+
+\noindent
+Admittedly the risk of this is low because almost all code frameworks are made with the intention of easily being able to be implemented with different aspects of a project. You still however cannot rely purely on assumptions, especially with less popular frameworks as those haven't been tried as tested to the save degree as popular ones. React being a very popular framework gives me the confidence that it will integrate well.
+
+\subsection{Slow front end performance}
+If programmed un-optimally, the front end has the risk of having very slow performance. This would typically stem from the programmer using the front end to do too much of the processing where the back end could easily do this more effectively. To mitigate this risk I will undertake the approach of trying to minimise the amount of modification made to data before being posted to the back end server. If I am able to send this data in as raw of a format as possible and process it on the back end this should reduce front end processing and result in a faster application for the user.\\
+
+\noindent
+\textbf{Likelihood:} Low\\
+\textbf{Importance:} Low\\
+
+\noindent
+The risk of this becoming an issue should be relatively low assuming it is something which I keep on top of from the beginning. The evaluation of this risk comes of a lesson learned from a previous project therefore the risk of it happening is substantially lower than if this were my first ever time developing a web application.
+
+\subsection{Security vulnerabilities}
+Just as with any application which relies on storing personal user data there is a risk of security vulnerabilities. To protect the data of users and the database I will aim to implement some level of protection against attacks such as SQL injection. I will additionally try and enforce a policy to not store critical information such as passwords in plain text format nor transfer them over any network in such a format. This minimises the risk of any attacker being able to extract such data either from the hardware directly or from network traffic.\\
+
+\noindent
+\textbf{Likelihood:} High\\
+\textbf{Importance:} High\\
+
+\noindent
+The likelihood of attacks such as SQL injection being attempted on the application are almost a certainty due to the simplicity of the attack. Therefore it is highly important that I find the time to implement protections against it.
+
+\subsection{Data confidentiality}
+A particular concern in this context is protecting the data of the users. In particular the position data which may be contained as meta data within an uploaded image. It is possible that other users could view this data and then get a good idea of where certain users live. This is a large safety and confidentiality risk for potential users therefore must be addressed. Ideally this would be mitigated by removing any such data during the upload process, thus making it impossible to extract. There is however the chance that I will not be able to manage this in time, which in that case the second best option is to ensure that users are aware of this risk when signing up at the very least.\\
+
+\noindent
+\textbf{Likelihood:} Moderate\\
+\textbf{Importance:} High\\
+
+\noindent
+The risk to safety in this instance is moderate but not critical as it is unlikely that the data will be enough to get a precise location of a user however this maybe be the case given enough data and time. This isn't to say that it is not important to mitigate this risk as in this instance people's livelihoods could be put at risk which is a very serious issue.
+
+\subsection{Non valid image uploads}
+Moderation is something which has to be taken into consideration with this application, as it will allow people to upload images freely. This brings the risk of creating a platform for hateful or explicit imagery, or even just images which do not fit the theme and purpose of the website. To mitigate this I intend to implement a feature to allow moderators to manually approve or deny image uploads. This would be more efficient at a larger scale if this could be done using AI, however that is something which is outside of the scope of this project.\\
+
+\noindent
+\textbf{Likelihood:} Moderate\\
+\textbf{Importance:} Moderate\\
+
+\noindent
+The risk of this becoming and issue grows as the user base grows, purely by the notion that more total people also means more bad people. As stated previously, this application isn't intended to have a broad audience like a lot of other social media, therefore it is likely there will be a very limited number of invalid images and it is possible that a manual moderation approach will be sufficient.
+
+If this application were intended for a broader audience the importance of mitigating this risk in an efficient manor would be a lot more important, but considering the scope of who the application is intended to reach I would have to put it down to only moderate importance.
+
+\section{Bibliography}
+
+\noindent
+Rawat, P. and Mahajan, A.N., 2020. ReactJS: A modern web development framework. International Journal of Innovative Science and Research Technology, 5(11), pp.698-702.\\
+
+\noindent
+Bojinov, V., 2015. RESTful Web API Design with Node. js. Packt Publishing\\
+
+\noindent
+Harrington, J.L., 2016. Relational database design and implementation. Morgan Kaufmann.\\
+
+\end{document}

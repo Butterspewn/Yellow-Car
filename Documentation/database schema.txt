@@ -1,0 +1,49 @@
+user
+    email
+    username
+    pfp
+    score
+    password
+    salt
+    session
+
+createUser() new user
+deleteUser() delete account
+editUser() update pfp, username, password
+getUser() 
+getAllUsers() sorted by score
+
+
+post_comment
+    id
+    post_id
+    account_id
+    text
+
+createComment() make comment on post
+deleteComment() remove comment from post
+editComment() make changes to existing comment
+getComments() get comments to display under post
+
+
+post
+    id
+    account_id
+    image
+    caption
+
+createPost() post to account
+deletePost() remove post from account
+editCaption() user can edit caption
+getFeedPosts() get all posts for feed
+getProfilePosts() get all posts for a specific user
+
+sessions_table
+    session_expiration_date
+    session
+    session_owner_email
+
+createSession() create token when logging in
+deleteSession() delete token when logging out
+validateSession() validate token when re opening page after not logging out
+refreshSession() delete old token and create new one with different expiration

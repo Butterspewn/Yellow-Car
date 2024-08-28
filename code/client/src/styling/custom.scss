@@ -1,0 +1,229 @@
+// overriding main colour variables
+$primary: #ffaa00;
+$secondary: #181817;
+$dark: #080807;
+
+// imports bootstrap styling
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// custom styling
+.post {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 1400px;
+  aspect-ratio: 21/9;
+
+  padding: 20px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+
+  border-radius: 10px;
+
+  background-color: $secondary;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  height: 35px;
+  width: 100%;
+
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 1000px;
+  aspect-ratio: 16/9;
+
+  border-radius: 10px;
+  background-color: #000000;
+
+  margin-right: 20px;
+}
+
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
+.caption {
+  display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  background-color: $dark;
+  margin-bottom: 5px;
+}
+
+.comment-list {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  height: 100%;
+  background-color: $dark;
+}
+
+.comment {
+  display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.comment-username {
+  color: $primary;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.comment-text {
+  font-size: 16px;
+}
+
+.comment-upload {
+  width: 340px;
+  display: flex;
+  margin-top: auto;
+}
+
+.comment-upload-input {
+  margin-right: 5px;
+  color: $white;
+  background-color: $dark;
+  border-color: $secondary;
+}
+
+.comment-upload-input:focus {
+  margin-right: 5px;
+  color: $white;
+  background-color: $dark;
+  border-color: $secondary;
+}
+
+.medium-image {
+  border-radius: 10px;
+  background-color: #000000;
+  margin: 5px;
+}
+
+.small-image {
+  border-radius: 20px;
+  background-color: #ffffff;
+  width: 35px;
+  aspect-ratio: 1/1;
+  margin-right: 10px;
+}
+
+.login-status {
+  background-color: $primary;
+  height: 50px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.username-primary {
+  color: $primary;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.username-black {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.rank-tile-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 33%;
+  border-bottom: 1px solid $secondary;
+}
+
+.rank-tile-ranking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: $primary;
+  margin-right: 25px;
+}
+
+.rank-tile-pfp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.rank-tile-username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 25px;
+}
+
+.rank-tile-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: $primary;
+}
+
+.logout-container {
+  margin-top: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: right;
+}
+
+.user-posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 630px;
+}
+
+.input-cluster {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+
+  background-color: $secondary;
+}
+
+.absolute {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.input-cluster-title {
+  color: $primary;
+}
+
+.logo {
+  margin-left: 1%;
+}
+
+body {
+  color: $white;
+  background-color: $dark;
+}
